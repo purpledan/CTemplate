@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-O2",
+      "-pipe",
+      "-c",
+      "-o",
+      "src/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/dan/REPOS/CTemplate",
+    "file": "/home/dan/REPOS/CTemplate/src/main.c",
+    "output": "/home/dan/REPOS/CTemplate/src/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-O2",
+      "-pipe",
+      "-c",
+      "-o",
+      "src/world.o",
+      "src/world.c"
+    ],
+    "directory": "/home/dan/REPOS/CTemplate",
+    "file": "/home/dan/REPOS/CTemplate/src/world.c",
+    "output": "/home/dan/REPOS/CTemplate/src/world.o"
+  }
+]

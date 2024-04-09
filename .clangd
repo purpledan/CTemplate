@@ -1,0 +1,10 @@
+InlayHints:
+  Designators: yes
+  Enabled: yes
+  ParameterNames: yes
+
+Completion:
+  AllScopes: no
+
+Index:
+  StandardLibrary: no
