@@ -1,4 +1,4 @@
-#include "../include/world.h"
+#include "world.h"
 
 /** Prints the word "world\n" to stdin */
 void print_world() {

@@ -1,9 +1,13 @@
 [
   {
     "arguments": [
-      "/usr/bin/cc",
-      "-O2",
-      "-pipe",
+      "/usr/local/bin/clang18",
+      "-std=c23",
+      "-pedantic",
+      "-Wall",
+      "-D_DEFAULT_SOURCE",
+      "-D_BSD_SOURCE",
+      "-D_XOPEN_SOURCE=700",
       "-c",
       "-o",
       "src/main.o",
@@ -15,9 +19,13 @@
   },
   {
     "arguments": [
-      "/usr/bin/cc",
-      "-O2",
-      "-pipe",
+      "/usr/local/bin/clang18",
+      "-std=c23",
+      "-pedantic",
+      "-Wall",
+      "-D_DEFAULT_SOURCE",
+      "-D_BSD_SOURCE",
+      "-D_XOPEN_SOURCE=700",
       "-c",
       "-o",
       "src/world.o",

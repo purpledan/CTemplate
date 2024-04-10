@@ -1,27 +1,28 @@
 # Dan's template Makefile for C programs under FreeBSD
 
-SRC_DIR = src
-OBJ_DIR = src
-BIN_DIR = .
+SRC := src/main.c src/world.c
+OBJS = ${SRC:.c=.o}
+CC = clang18
 
-#Program binary name
-BIN = ${BIN_DIR}/program
+# Includes and Libs
+INCS =
+LIBS = -lm
 
-#SRC := ${$(SRC_DIR)/*.c}
-#SRC := $(SRC_DIR)/main.c $(SRC_DIR)/world.c
-SRC != ls ${SRC_DIR}/*.c
-OBJ := ${SRC:.c=.o}
+# Flags
+CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700
+CFLAGS = -std=c23 -pedantic -Wall $(INCS) $(CPPFLAGS)
+LDFLAGS = $(LIBS)
+DEBUGFLAGS = -o0 
+all: CTemplate
 
-.PHONY: all clean
+CTemplate: $(OBJS)
+	$(CC) $(DEBUGFLAGS) $(CFLAGS) -o $(.TARGET) $(.ALLSRC) 
 
-all: $(BIN)
+$(OBJS): $(.PREFIX).c 
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
-$(BIN): $(OBJ)
-	$(CC) $(OBJ) -o $@ 
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC)  -c $< -o $@ 
 
 clean:
-	rm -rv $(OBJ) $(BIN)
+	rm -rv $(OBJS) CTemplate
 
+.PHONY: all clean
