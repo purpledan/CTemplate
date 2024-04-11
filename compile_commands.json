@@ -3,36 +3,28 @@
     "arguments": [
       "/usr/local/bin/clang18",
       "-std=c23",
-      "-pedantic",
       "-Wall",
-      "-D_DEFAULT_SOURCE",
-      "-D_BSD_SOURCE",
-      "-D_XOPEN_SOURCE=700",
+      "-D_GNU_SOURCE",
+      "-glldb",
+      "-Og",
       "-c",
-      "-o",
-      "src/main.o",
-      "src/main.c"
+      "../src/main.c"
     ],
-    "directory": "/home/dan/REPOS/CTemplate",
-    "file": "/home/dan/REPOS/CTemplate/src/main.c",
-    "output": "/home/dan/REPOS/CTemplate/src/main.o"
+    "directory": "/home/dan/REPOS/CTemplate/obj",
+    "file": "/home/dan/REPOS/CTemplate/src/main.c"
   },
   {
     "arguments": [
       "/usr/local/bin/clang18",
       "-std=c23",
-      "-pedantic",
       "-Wall",
-      "-D_DEFAULT_SOURCE",
-      "-D_BSD_SOURCE",
-      "-D_XOPEN_SOURCE=700",
+      "-D_GNU_SOURCE",
+      "-glldb",
+      "-Og",
       "-c",
-      "-o",
-      "src/world.o",
-      "src/world.c"
+      "../src/world.c"
     ],
-    "directory": "/home/dan/REPOS/CTemplate",
-    "file": "/home/dan/REPOS/CTemplate/src/world.c",
-    "output": "/home/dan/REPOS/CTemplate/src/world.o"
+    "directory": "/home/dan/REPOS/CTemplate/obj",
+    "file": "/home/dan/REPOS/CTemplate/src/world.c"
   }
 ]

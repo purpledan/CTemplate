@@ -1,7 +1,10 @@
 # Dan's template Makefile for C programs under FreeBSD
 
-SRC := src/main.c src/world.c
-OBJS = ${SRC:.c=.o}
+BIN = CTemplate
+SRC = main.c world.c
+OBJ = $(SRC:.c=.o)
+
+# Compiler
 CC = clang18
 
 # Includes and Libs
@@ -9,20 +12,39 @@ INCS =
 LIBS = -lm
 
 # Flags
-CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700
-CFLAGS = -std=c23 -pedantic -Wall $(INCS) $(CPPFLAGS)
+CPPFLAGS = -D_GNU_SOURCE
+CFLAGS = -std=c23 -Wall $(INCS) $(CPPFLAGS)
 LDFLAGS = $(LIBS)
-DEBUGFLAGS = -o0 
-all: CTemplate
+DEBUG = -glldb -Og
+RELEASE = -O3
 
-CTemplate: $(OBJS)
-	$(CC) $(DEBUGFLAGS) $(CFLAGS) -o $(.TARGET) $(.ALLSRC) 
+#NOTE: Set default build below, or use -D BUILD_RELEASE/BUILD_DEBUG
+.ifdef BUILD_RELEASE
+CFLAGS += ${RELEASE}
+.elifdef BUILD_DEBUG
+CFLAGS += ${DEBUG}
+.else
+CFLAGS += ${DEBUG}
+.endif
 
-$(OBJS): $(.PREFIX).c 
-	$(CC) $(CFLAGS) -c $< -o $@ 
+#NOTE: Use -D BUILD_VERBOSE to get clang verbose build output
+.ifdef BUILD_VERBOSE
+CFLAGS += -v
+.endif
 
+all: $(BIN)
+
+.PATH: ../src
+
+.SUFFIXES: .o .c
+.c.o:
+	$(CC) $(CFLAGS) -c $(.IMPSRC)
+
+
+$(BIN): $(OBJ)
+	$(CC) -o $(.TARGET) $(.ALLSRC)
 
 clean:
-	rm -rv $(OBJS) CTemplate
+	rm -rv *.o $(BIN)
 
 .PHONY: all clean
